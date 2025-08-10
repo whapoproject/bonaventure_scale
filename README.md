@@ -48,6 +48,11 @@ print("Fahrenheit:", bonaventure_to_fahrenheit(b_temp))
 
 ---
 
+## 🖩 Interactive Calculator
+- Try the Bonaventure Scale calculator instantly:  
+- 🌡 [Open Calculator](https://whapoproject.github.io/bonaventure_scale/)
+
+![Calculator Preview](docs/preview.png)
 ## 🔧 Development
 
 This package supports `pytest` testing.
