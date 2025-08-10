@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bonaventure Scale Calculator</title>
+<style>
+  :root {
+    --bg-color: white;
+    --text-color: black;
+    --input-bg: #f6f8fa;
+    --input-border: #d0d7de;
+    --btn-bg: #0969da;
+    --btn-text: white;
+    --card-bg: white;
+    --shadow: rgba(0, 0, 0, 0.1);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg-color: #0d1117;
+      --text-color: #c9d1d9;
+      --input-bg: #161b22;
+      --input-border: #30363d;
+      --btn-bg: #238636;
+      --btn-text: white;
+      --card-bg: #161b22;
+      --shadow: rgba(255, 255, 255, 0.05);
+    }
+  }
+  body {
+    font-family: system-ui, sans-serif;
+    background: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+  }
+  .container {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 10px var(--shadow);
+    max-width: 400px;
+    width: 100%;
+  }
+  h1 {
+    text-align: center;
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+  }
+  input {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 6px;
+    border: 1px solid var(--input-border);
+    background: var(--input-bg);
+    color: var(--text-color);
+    margin-bottom: 10px;
+  }
+  button {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    background: var(--btn-bg);
+    color: var(--btn-text);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-bottom: 10px;
+  }
+  button:hover {
+    opacity: 0.9;
+  }
+  .result {
+    font-size: 1rem;
+    margin-top: 10px;
+    line-height: 1.5;
+  }
+  .formula {
+    font-size: 0.85rem;
+    margin-top: 15px;
+    opacity: 0.8;
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <h1>Bonaventure Scale Calculator</h1>
+    <input id="b" type="number" placeholder="Enter °B" step="0.01">
+    <button onclick="convert()">Convert</button>
+    <div class="result" id="result"></div>
+    <div class="formula">
+      <strong>Formulas:</strong><br>
+      °C = (100 / 198) × (°B − 50)<br>
+      °F = (180 / 198) × (°B − 14.8)<br>
+      K = °C + 273.15
+    </div>
+  </div>
+
+<script>
+function convert() {
+  let b = parseFloat(document.getElementById('b').value);
+  if (isNaN(b)) {
+    document.getElementById('result').innerHTML = "Please enter a valid number.";
+    return;
+  }
+  let c = (100 / 198) * (b - 50);
+  let f = (180 / 198) * (b - 14.8);
+  let k = c + 273.15;
+
+  document.getElementById('result').innerHTML = 
+    `🌡 <strong>${b.toFixed(2)} °B</strong> = 
+     <br>• ${c.toFixed(2)} °C
+     <br>• ${f.toFixed(2)} °F
+     <br>• ${k.toFixed(2)} K`;
+}
+</script>
+</body>
+</html>
